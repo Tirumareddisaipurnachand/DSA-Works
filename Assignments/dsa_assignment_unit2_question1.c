@@ -11,19 +11,19 @@ operators and parentheses.*/
 char stack[MAX];
 int top = -1;
 
-// Push an operator onto the stack
+
 void push(char ch)
 {
     stack[++top] = ch;
 }
 
-// Pop an operator from the stack
+
 char pop()
 {
     return stack[top--];
 }
 
-// Return precedence of operators
+
 int precedence(char ch)
 {
     switch (ch)
@@ -41,7 +41,7 @@ int precedence(char ch)
     }
 }
 
-// Check whether operator is right associative
+
 int isRightAssociative(char ch)
 {
     return ch == '^';
@@ -60,19 +60,19 @@ int main()
     {
         ch = infix[i];
 
-        // If operand, add directly to postfix
+        
         if (isalnum(ch))
         {
             postfix[j++] = ch;
         }
 
-        // If opening parenthesis, push it
+        
         else if (ch == '(')
         {
             push(ch);
         }
 
-        // If closing parenthesis, pop until '('
+        
         else if (ch == ')')
         {
             while (top != -1 && stack[top] != '(')
@@ -84,7 +84,7 @@ int main()
                 pop();
         }
 
-        // If operator
+        
         else
         {
             while (top != -1 &&
@@ -100,7 +100,7 @@ int main()
         }
     }
 
-    // Pop remaining operators
+    
     while (top != -1)
     {
         postfix[j++] = pop();
